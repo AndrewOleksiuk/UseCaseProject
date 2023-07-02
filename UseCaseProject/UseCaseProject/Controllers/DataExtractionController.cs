@@ -11,22 +11,25 @@ namespace UseCaseProject.Controllers
 	{
 		private readonly ITypedHttpClient _httpClient;
 		private readonly IDataService _dataService;
+		private readonly IConfiguration _configuration;
 
 		/// <summary>
-		/// Constructor
+		/// 
 		/// </summary>
 		/// <param name="httpClient"></param>
 		/// <param name="dataService"></param>
-		public DataExtractionController(ITypedHttpClient httpClient, IDataService dataService)
+		/// <param name="configuration"></param>
+		public DataExtractionController(ITypedHttpClient httpClient, IDataService dataService, IConfiguration configuration)
 		{
 			_httpClient = httpClient;
 			_dataService = dataService;
+			_configuration = configuration;
 		}
 
 		[HttpGet]
 		public async Task<IEnumerable<Country>> Get(string? countryName = null, int? population = null, string? sortingOrder = null, int? pageSize = null)
 		{
-			var countries = await _httpClient.GetAsync<IEnumerable<Country>>(new Uri("https://restcountries.com/v3.1/all"));
+			var countries = await _httpClient.GetAsync<IEnumerable<Country>>(new Uri(_configuration["APIUrl"]));
 
 			countries = _dataService.FilterByName(countryName, countries);
 			countries = _dataService.FilterByPopulation(population, countries);

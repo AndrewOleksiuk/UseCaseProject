@@ -10,7 +10,7 @@ namespace UseCaseProject.Services
 		/// <param name="name"></param>
 		/// <param name="countries"></param>
 		/// <returns></returns>
-		IEnumerable<Country> FilterByName(string? name, IEnumerable<Country> countries);
+		IEnumerable<Country> FilterByName(string? nameFilter, IEnumerable<Country> countries);
 
 		/// <summary>
 		/// 
