@@ -1,4 +1,5 @@
 using UseCaseProject.HttpClients;
+using UseCaseProject.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,7 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddHttpClient("https://restcountries.com/v3.1/all");
 builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("https://restcountries.com/v3.1/all"));
 builder.Services.AddScoped<ITypedHttpClient, TypedHttpClient>();
+builder.Services.AddScoped<IDataService, DataService>();
 
 var app = builder.Build();
 
