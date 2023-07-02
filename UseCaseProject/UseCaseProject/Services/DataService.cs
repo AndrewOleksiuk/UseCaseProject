@@ -25,5 +25,19 @@ namespace UseCaseProject.Services
 
 			return countries.Where(c => c.Population < population);
 		}
+
+		public IEnumerable<Country> SortByName(string? order, IEnumerable<Country> countries)
+		{
+			if (order == "ascend")
+			{
+				return countries.OrderBy(c => c.Name.Common);
+			}
+			else if (order == "descend")
+			{
+				return countries.OrderByDescending(c => c.Name.Common);
+			}
+
+			return countries;
+		}
 	}
 }

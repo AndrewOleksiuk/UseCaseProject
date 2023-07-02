@@ -19,5 +19,13 @@ namespace UseCaseProject.Services
 		/// <param name="countries"></param>
 		/// <returns></returns>
 		IEnumerable<Country> FilterByPopulation(int? population, IEnumerable<Country> countries);
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="name"></param>
+		/// <param name="countries"></param>
+		/// <returns></returns>
+		IEnumerable<Country> SortByName(string? order, IEnumerable<Country> countries);
 	}
 }
