@@ -24,11 +24,12 @@ namespace UseCaseProject.Controllers
 		}
 
 		[HttpGet]
-		public async Task<IEnumerable<Country>> Get(string countryName = "", int? population = null, string field3 = "")
+		public async Task<IEnumerable<Country>> Get(string? countryName = null, int? population = null, string? field3 = null)
 		{
 			var countries = await _httpClient.GetAsync<IEnumerable<Country>>(new Uri("https://restcountries.com/v3.1/all"));
 
 			countries = _dataService.FilterByName(countryName, countries);
+			countries = _dataService.FilterByPopulation(population, countries);
 
 			return countries;
 		}
