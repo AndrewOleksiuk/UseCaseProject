@@ -145,7 +145,7 @@ namespace UnitTests
 			Assert.Equal("First", result[0].Name.Common);
 		}
 
-		private IEnumerable<Country> CreateCountries()
+		private static IEnumerable<Country> CreateCountries()
 		{
 			return new List<Country>
 			{
