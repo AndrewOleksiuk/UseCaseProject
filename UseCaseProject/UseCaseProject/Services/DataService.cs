@@ -39,5 +39,15 @@ namespace UseCaseProject.Services
 
 			return countries;
 		}
+
+		public IEnumerable<Country> TakeFirstNth(int? numberOfRecords, IEnumerable<Country> countries)
+		{
+			if (numberOfRecords == null)
+			{
+				return countries;
+			}
+
+			return countries.Take(numberOfRecords.Value);
+		}
 	}
 }

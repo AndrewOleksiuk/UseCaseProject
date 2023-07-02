@@ -27,5 +27,13 @@ namespace UseCaseProject.Services
 		/// <param name="countries"></param>
 		/// <returns></returns>
 		IEnumerable<Country> SortByName(string? order, IEnumerable<Country> countries);
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="numberOfRecords"></param>
+		/// <param name="countries"></param>
+		/// <returns></returns>
+		IEnumerable<Country> TakeFirstNth(int? numberOfRecords, IEnumerable<Country> countries);
 	}
 }
